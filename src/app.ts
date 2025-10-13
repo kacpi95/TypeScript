@@ -1,9 +1,11 @@
-const inputOne: HTMLInputElement = document.querySelector('#input1');
-const inputTwo: HTMLInputElement = document.querySelector('#input2');
-const btn = document.querySelector('#buttonAdd');
+const btn = document.querySelector('#button');
 
+const calculate = (originalPrice: number, hasDiscount: boolean) => {
+  return hasDiscount ? originalPrice * 0.8 : originalPrice;
+};
 btn.addEventListener('click', () => {
-  let one: number = Number(inputOne.value);
-  let two: number = Number(inputTwo.value);
-  console.log(one + two);
+  const originalPrice: number = 50;
+  const hasDiscount: boolean =
+    new URLSearchParams(window.location.search).get('discount') === 'true';
+  console.log(calculate(originalPrice, hasDiscount));
 });
