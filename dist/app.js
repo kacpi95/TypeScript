@@ -1,9 +1,10 @@
 const tasksContainerElement = document.querySelector('.tasks');
 const btn = document.querySelector('.btn');
 const input = document.querySelector('#name');
+const categories = ['general', 'work', 'gym', 'hobby'];
 const tasks = [
     { name: 'Wyrzucić śmeici', done: false },
-    { name: 'Pójść na siłkę', done: true },
+    { name: 'Pójść na siłkę', done: true, category: 'gym' },
     { name: 'Nakarmić koty', done: false },
 ];
 const render = () => {
@@ -12,6 +13,9 @@ const render = () => {
         const id = `task-${index}`;
         const taskElement = document.createElement('li');
         const labelElement = document.createElement('label');
+        if (task.category) {
+            taskElement.classList.add(task.category);
+        }
         labelElement.innerText = task.name;
         labelElement.setAttribute('for', id);
         const checkboxElement = document.createElement('input');
@@ -27,13 +31,13 @@ const render = () => {
         tasksContainerElement.appendChild(taskElement);
     });
 };
-const addTask = (taskName) => {
-    tasks.push({ name: taskName, done: false });
+const addTask = (task) => {
+    tasks.push(task);
     input.value = '';
 };
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    addTask(input.value);
+    addTask({ name: input.value, done: false });
     render();
 });
 render();
