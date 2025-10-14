@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TypeScript</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <button id="button">Buy</button>
+    <div>
+      <form class="container" autocomplete="off">
+        <label for="name">Task:</label>
+        <input type="text" id="name" />
+        <button class="btn">Add</button>
+        <div class="containerToDo">
+          <p>ToDo:</p>
+          <ul class="tasks"></ul>
+        </div>
+      </form>
+    </div>
     <script src="./dist/app.js"></script>
   </body>
 </html>
