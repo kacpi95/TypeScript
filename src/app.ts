@@ -1,3 +1,5 @@
+import { Task, Category } from './types/types';
+
 const tasksContainerElement: HTMLElement = document.querySelector('.tasks');
 const btn: HTMLButtonElement = document.querySelector('.btn');
 const input: HTMLInputElement = document.querySelector('#name');
@@ -5,13 +7,6 @@ const categoriesContainerElement: HTMLElement =
   document.querySelector('.categories');
 
 let selectedCategory: Category;
-
-type Category = 'general' | 'work' | 'gym' | 'hobby';
-interface Task {
-  name: string;
-  done: boolean;
-  category?: Category;
-}
 
 const categories: Category[] = ['general', 'work', 'gym', 'hobby'];
 

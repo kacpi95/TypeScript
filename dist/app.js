@@ -64,3 +64,4 @@ btn.addEventListener('click', (e) => {
 addTask({ name: 'zrobić zakupy', done: true, category: 'hobby' });
 renderCategory();
 render();
+export {};
