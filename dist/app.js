@@ -1,6 +1,8 @@
 const tasksContainerElement = document.querySelector('.tasks');
 const btn = document.querySelector('.btn');
 const input = document.querySelector('#name');
+const categoriesContainerElement = document.querySelector('.categories');
+let selectedCategory;
 const categories = ['general', 'work', 'gym', 'hobby'];
 const tasks = [
     { name: 'Wyrzucić śmeici', done: false },
@@ -31,13 +33,34 @@ const render = () => {
         tasksContainerElement.appendChild(taskElement);
     });
 };
+const renderCategory = () => {
+    categories.forEach((category) => {
+        const categoryElement = document.createElement('li');
+        const radioInputElement = document.createElement('input');
+        radioInputElement.type = 'radio';
+        radioInputElement.name = 'category';
+        radioInputElement.value = category;
+        radioInputElement.id = `category-${category}`;
+        radioInputElement.addEventListener('change', () => {
+            selectedCategory = category;
+        });
+        const labelElement = document.createElement('label');
+        labelElement.setAttribute('for', `category-${category}`);
+        labelElement.innerText = category;
+        categoryElement.appendChild(radioInputElement);
+        categoryElement.appendChild(labelElement);
+        categoriesContainerElement.appendChild(categoryElement);
+    });
+};
 const addTask = (task) => {
     tasks.push(task);
     input.value = '';
 };
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    addTask({ name: input.value, done: false });
+    addTask({ name: input.value, done: false, category: selectedCategory });
     render();
 });
+addTask({ name: 'zrobić zakupy', done: true, category: 'hobby' });
+renderCategory();
 render();
