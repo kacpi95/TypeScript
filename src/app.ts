@@ -1,5 +1,5 @@
 import { Task, Category } from './types/types';
-import { render } from './helpers/render-tasks-helper.js';
+import  render  from './helpers/render-tasks-helper.js';
 import { renderCategory } from './helpers/render-categories-helper.js';
 
 const tasksContainerElement: HTMLElement = document.querySelector('.tasks');
